@@ -1,0 +1,26 @@
+@mixin default(
+    $background: var(--color-primary),
+    $color: var(--color-light),
+    $hover-background: var(--color-accent),
+    $hover-color: var(--color-light)
+    ) {
+    border: none;
+    background-color: $background;
+    color: $color;
+    padding: 12px 28px;
+    transform: skewX(-10deg);
+
+    // Skew the text back to normal font style and apply italic font.
+    & > span {
+        display: block;
+        font-family: var(--font-primary-sans);
+        font-size: 2rem;
+        transform: skewX(10deg);
+        font-style: italic;
+    }
+
+    &:hover {
+        background-color: $hover-background;
+        color: $hover-color;
+    }
+}
