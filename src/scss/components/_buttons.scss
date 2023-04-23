@@ -1,26 +1,77 @@
+@use '../utilities/responsive';
+
 @mixin default(
     $background: var(--color-primary),
     $color: var(--color-light),
-    $hover-background: var(--color-accent),
-    $hover-color: var(--color-light)
+    $hover-background: var(--color-primary-700),
+    $hover-color: var(--color-light),
+    $padding: 12px 28px,
+    $font-size: 1.94rem
     ) {
-    border: none;
-    background-color: $background;
-    color: $color;
-    padding: 12px 28px;
-    transform: skewX(-10deg);
+        border: none;
+        background-color: $background;
+        color: $color;
+        font-size: $font-size;
+        padding: $padding;
+        transform: skewX(-10deg);
+        position: relative;
+        overflow: hidden;
+    
+        @include responsive.max(600px) {
+            padding: 6px 14px;
+        }
+
+    &:before {
+        content: '';
+        position: absolute;
+        background-color: $hover-background;
+        opacity: 0.5;
+        bottom: 0;
+        left: -103%;
+        height: 100%;
+        width: 100%;
+        transform: skewX(-1deg);
+    }
 
     // Skew the text back to normal font style and apply italic font.
     & > span {
         display: block;
         font-family: var(--font-primary-sans);
-        font-size: 2rem;
-        transform: skewX(10deg);
+        font-size: $font-size;
+        transform: skewX(10deg) scale(1);
         font-style: italic;
+
+        @include responsive.max(600px) {
+            font-size: 1.2rem;
+        }
     }
 
     &:hover {
-        background-color: $hover-background;
-        color: $hover-color;
+      
+        -webkit-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
+        box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
+        transition: box-shadow 0.2s 0.25s;
+        cursor: pointer;
+        
+        &:before {
+            animation: slide 0.25s;
+
+        }
+
+        & > span {
+            transform: skewX(10deg) scale(1.2);
+            transition: all 0.2s 0.25s;
+        }
+    }
+}
+
+@keyframes slide {
+    from {
+        left: -103%;
+    }
+
+    to {
+        left: 120%; 
     }
 }

@@ -1,0 +1,137 @@
+@use '../utilities/responsive';
+
+.site-footer {
+    display: grid;
+    grid-template-columns: var(--grid-container);
+    background-color: var(--color-dark-200);
+    height: 450px;
+
+    @include responsive.max(825px) {
+        height: 100%;
+    }
+
+    &__inner {
+        grid-column: inner;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &__main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        height: 100%;
+
+        @include responsive.max(825px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--gap-xl);
+            padding: var(--gap-xl) 0;
+        }
+
+        @include responsive.max(480px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--gap-m) 0;
+        }
+    }
+
+    &__company-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2.5rem;
+        font-size: 1rem;
+        color: var(--color-light);
+
+        span {
+            font-weight: 600;
+        }
+
+        @include responsive.max(825px) {
+            grid-column: 1 / span 2;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__sitemap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__icons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: var(--section-gap-inner);
+
+        @include responsive.max(480px) {
+            flex-direction: row;
+            align-items: center;
+        }
+
+    }
+
+    &__partnership {
+        @include responsive.max(1000px) {
+            svg {
+                width: 200px;
+            }    
+        }
+    }
+
+    &__social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--gap-s);
+    }
+
+    &__copyright {
+        color: var(--color-light);
+        opacity: 0.53;
+
+        @include responsive.max(600px) {
+            font-size: var(--font-size-small);
+        }
+    }
+
+    &__footer {
+        height: 75px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        @include responsive.max(825px) {
+            position: relative;
+            justify-content: center;
+        }
+
+    }
+
+}
+
+.sitemap {
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    &__item {
+    }
+    
+    &__link {
+        color: var(--color-light);
+    }
+}

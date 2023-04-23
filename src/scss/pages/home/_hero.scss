@@ -1,4 +1,5 @@
 @use '../../components/buttons';
+@use '../../utilities/responsive';
 
 .hero {
 
@@ -6,17 +7,30 @@
     grid-template-columns: var(--grid-container);
     height: 100vh;
     width: 100%;
-    background-color: blue; //temp
+    background-image: url(/src/assets/images/hero.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: #000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.38;
+    }
     
     &__inner {
         grid-column: inner;
-        background-color: black; // temp
         display: flex;
         flex-direction: column;
+        z-index: 1;
     }
 
     &__content {
-        background-color: darkblue; //temp
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -27,11 +41,10 @@
     }
 
     &__title {
-        font-size: 6.25rem;
+        font-size: clamp(3rem, 1.8026rem + 5.4737vw, 6.25rem);
         display: block;
         margin-bottom: 3rem;
         color: var(--color-light);
-        font-weight: 500;
     }
 
     &__buttons {
@@ -41,9 +54,33 @@
         gap: 1rem;
     }
 
-    &__footer {
-        height: 100px;
-        background-color: purple; //temp
+    &-footer {
+        min-height: 100px;
+
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        &__readmore, &__social {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        &__readmore {
+
+            background-color: transparent;
+            border: none;
+
+            &-text {
+                color: var(--color-light);
+                font-family: var(--font-primary-sans);
+                font-size: var(--font-size-1);
+            }
+        }
     }
 
 }
@@ -52,10 +89,11 @@
 
     &--booking {
         @include buttons.default;
+
     }
 
     &--membership {
-        @include buttons.default($background: var(--color-secondary));
+        @include buttons.default($background: var(--color-secondary), $hover-background: var(--color-secondary-500));
     }
 
 }

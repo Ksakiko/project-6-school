@@ -1,3 +1,5 @@
+@use '../utilities/responsive';
+
 :root {
 
     --section-gap: 8rem;
@@ -11,36 +13,36 @@
     --border-radius: 0px;
 
     --color-dark: #222;
-    --color-dark-200: #444;
-    --color-dark-300: #666;
-    --color-dark-500: #888;
-    --color-dark-600: #999;
-    --color-dark-700: #b5b5b5;
-    --color-dark-800: #d5d5d5;
+    --color-dark-200: #2B3135;
+    --color-dark-300: #3F4A53;
+    --color-dark-500: #435665;
+    --color-dark-600: #50616F;
+    --color-dark-700: #707070;
+    --color-dark-800: #F2F3F3;
     --color-dark-900: #f1f1f1;
 
-    --color-primary: #FD3E1D;
-    --color-primary-200: #009fbb;
+    --color-primary: hsl(9, 98%, 55%);
+    --color-primary-200: hsl(9, 88%, 56%);
     --color-primary-300: #009fbb;
-    --color-primary-400: #009fbb;
-    --color-primary-500: #009fbb;
-    --color-primary-600: #009fbb;
-    --color-primary-700: #009fbb;
+    --color-primary-400: hsl(9, 86%, 60%);
+    --color-primary-500: hsl(9, 80%, 64%);
+    --color-primary-600: hsl(15, 75%, 64%);
+    --color-primary-700: hsl(15, 75%, 69%);
     --color-primary-800: #009fbb;
     --color-primary-900: #009fbb;
     
-    --color-secondary: #0584FF;
-    --color-secondary-200: #009fbb;
-    --color-secondary-300: #009fbb;
-    --color-secondary-400: #009fbb;
-    --color-secondary-500: #009fbb;
+    --color-secondary: hsl(210, 100%, 51%);
+    --color-secondary-200: hsl(210, 95%, 51%);
+    --color-secondary-300: hsl(210, 90%, 55%);
+    --color-secondary-400: hsl(210, 85%, 60%);
+    --color-secondary-500: hsl(210, 83%, 68%);
     --color-secondary-600: #009fbb;
-    --color-secondary-700: #009fbb;
+    --color-secondary-700: hsl(210, 80%, 70%);
     --color-secondary-800: #009fbb;
     --color-secondary-900: #009fbb;
     
     --color-light: #ffffff;
-    --color-light-200: #efead8;
+    --color-light-200: #F2F3F3;
     --color-light-300: #efead8;
     --color-light-400: #efead8;
     --color-light-500: #efead8;
@@ -55,16 +57,34 @@
     --line-height: 1.5;
     
     --font-scale: 1.25;
-    --font-size: 1.125rem;
+    --font-size: 1.25rem;
 
+    --font-size-small: calc( var(--font-size-1) / 1.75 );
     --font-size-1: var(--font-size);
     --font-size-2: calc( var(--font-size-1) * var(--font-scale) );
     --font-size-3: calc( var(--font-size-2) * var(--font-scale) );
     --font-size-4: calc( var(--font-size-3) * var(--font-scale) );
     --font-size-5: calc( var(--font-size-4) * var(--font-scale) );
     --font-size-6: calc( var(--font-size-5) * var(--font-scale) );
+    --font-size-big: calc( var(--font-size-5) * 1.75 );
 
     --page-width: 80rem;
     --grid-container: [full-start] minmax(82px, 1fr) [inner-start] minmax(0, var(--page-width)) [inner-end] minmax(82px, 1fr) [full-end];
+
+    @include responsive.max(850px) {
+        --font-size: 1rem;
+    }
+
+    @include responsive.max(600px) {
+        --section-gap: 6rem;
+        --section-gap-inner: calc( var(--section-gap) * 0.75 );
+
+        --gap-xl: 3.5rem;
+        --gap-l: 2.5rem;
+        --gap-m: 1.5rem;
+        --gap-s: 1rem;
+
+        --grid-container: [full-start] minmax(48px, 1fr) [inner-start] minmax(0, var(--page-width)) [inner-end] minmax(48px, 1fr) [full-end];
+    }
 
 }

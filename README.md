@@ -1,9 +1,4 @@
-# sass-base-school-2022
-
-## Clone to update base system
-`git clone https://github.com/Ksakiko/sass-base-school-2022.git .`
-## Use as new project
-`git clone https://github.com/Ksakiko/sass-base-school-2022.git . && rm -rf .git`
+# Uppgift Project 6
 
 ## Develop
-sass --watch src/scss/style.scss style.css# project-6-school
+sass --watch src/scss/style.scss style.css

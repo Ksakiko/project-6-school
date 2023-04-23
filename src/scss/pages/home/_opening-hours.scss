@@ -1,0 +1,164 @@
+@use '../../components/buttons';
+@use '../../utilities/responsive';
+
+.opening-hours {
+    display: grid;
+    grid-template-columns: var(--grid-container);
+    margin-bottom: var(--section-gap-inner);
+
+    &__inner {
+        grid-column: inner;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--gap-l);
+
+        @include responsive.max(700px) {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: var(--gap-s);
+        }
+    }
+
+    &__title-and-week {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        gap: var(--gap-m);
+    }
+
+    &__title {
+        color: var(--color-dark-300);
+        font-size: var(--font-size-6);
+    }
+
+    &__week {
+        color: var(--color-secondary-700);
+        font-family: var(--font-primary-sans);
+        font-size: var(--font-size-4);
+        font-style: italic;
+    }
+
+    &__calendar {
+        @include buttons.default($padding: 15px 24px, $font-size: 40px);
+    
+        @include responsive.max(700px) {
+            @include buttons.default($padding: 10px 16px, $font-size: 30px)
+        }
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gap-l);
+
+        @include responsive.max(1300px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--gap-l);
+        }
+
+        @include responsive.max(1000px) {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-m);
+        }
+    }
+
+    &__card {
+
+        color: var(--color-dark-700);
+
+        &--reception {
+            background-color: var(--color-dark-500);
+            color: var(--color-light);
+            position: relative;
+
+            @include responsive.max(1300px) {
+                grid-column: 1 / span 2;
+                margin: 0 var(--section-gap-inner);
+                padding: 0 var(--gap-xl);
+            }
+
+            @include responsive.max(1000px) {
+                margin: 0;
+                padding: 0;
+            }
+
+            &::after {
+                content: url(/src/assets/icons/gray-corner-top.svg);
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
+            .opening-hours-card {
+            
+                &__title {
+                    color: var(--color-light);
+                }
+
+                &__list {
+                    margin-bottom: 1.5rem;
+                }
+
+                &__item {
+                    &:nth-of-type(odd) {
+                        background-color: var(--color-dark-600);
+                    }
+
+                    &--current {
+                        color: var(--color-primary);
+                    }
+                }
+
+                &__text {
+                    font-size: var(--font-size-small);
+                    opacity: 0.42;
+                    text-align: center;
+                    padding-bottom: var(--gap-l);
+
+                }
+            }
+        }
+    }
+
+    &-card {
+
+
+        &__title {
+            padding: var(--gap-l) var(--gap-l) 0 var(--gap-l);
+            margin-bottom: var(--gap-m);
+            font-size: var(--font-size-6);
+            color: var(--color-dark-300);
+        }
+
+        &__list {
+            list-style: none;
+        }
+
+        &__item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--font-size-1);
+            margin: 0 var(--gap-m);
+            // calculation for justifying the title and the days vertically  
+            padding: 0.5rem calc(var(--gap-l) - var(--gap-m));
+
+            &:nth-of-type(odd) {
+                background-color: var(--color-light-200);
+
+            }
+
+            &--current {
+                color: var(--color-secondary);
+            }
+        }
+    }
+
+
+}
